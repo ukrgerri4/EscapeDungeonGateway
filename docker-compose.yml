@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  escapedungeongateway:
+    image: escapedungeongateway
+    container_name: escapedungeongateway
+    build:
+      context: .
+      dockerfile: src/EscapeDungeonGateway/Dockerfile
+      args:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_URLS=http://+:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      nginx:
+      internal:
+    volumes:
+       # for linux config only 
+       #- "/var/run/docker.sock:/var/run/docker.sock"
+       - temp-keys:/root/.aspnet/DataProtection-Keys
+       - logs:/app/logs
+
+volumes:
+  temp-keys:
+  logs:
+
+networks:
+  nginx:
+    external: true
+    name: nginx-net
+  internal:
+    external: true
+    name: internal-net
