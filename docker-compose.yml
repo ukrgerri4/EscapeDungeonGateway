@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  escapedungeongateway:
-    image: escapedungeongateway
-    container_name: escapedungeongateway
+  escape-dungeon-gateway:
+    image: ukrgerri4/escape-dungeon-gateway:latest
+    container_name: escape-dungeon-gateway
     build:
       context: .
       dockerfile: src/EscapeDungeonGateway/Dockerfile
