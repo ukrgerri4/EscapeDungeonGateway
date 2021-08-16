@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Net;
 
 namespace EscapeDungeonGateway
 {
@@ -110,7 +111,7 @@ namespace EscapeDungeonGateway
             //app.UseHttpsRedirection();
 
             app.UseCors("CorsPolicy");
-            app.UseCookiePolicy();
+            // app.UseCookiePolicy();
 
             app.UseRouting();
 
