@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using EscapeDungeonGateway.Services;
+﻿using EscapeDungeonGateway.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EscapeDungeonGateway.Conrollers
 {
@@ -28,7 +28,7 @@ namespace EscapeDungeonGateway.Conrollers
             var tokenResult = await tokenService.GetEscapeDungeonTokenAsync(login, password);
             return tokenResult.IsSuccess ? Ok(tokenResult.Value) : BadRequest(tokenResult.Error);
         }
-        
+
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Introspect()
@@ -38,7 +38,7 @@ namespace EscapeDungeonGateway.Conrollers
             var introspectResult = await tokenService.IntrospectEscapeDungeonAsync(token);
             return introspectResult.IsSuccess ? Ok(introspectResult.Value) : BadRequest(introspectResult.Error);
         }
-        
+
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> UserInfo()

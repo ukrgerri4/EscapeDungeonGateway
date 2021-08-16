@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Net;
 
 namespace EscapeDungeonGateway
 {
@@ -32,7 +31,8 @@ namespace EscapeDungeonGateway
 
             #region HttpClients
             services.AddHttpContextAccessor();
-            services.AddHttpClient<ITokenService, TokenService>((provider, client) => {
+            services.AddHttpClient<ITokenService, TokenService>((provider, client) =>
+            {
                 var idsSettigs = provider.GetRequiredService<IIdentityServerSettings>();
                 client.BaseAddress = new Uri(idsSettigs.AuthorityUrl);
             });
@@ -94,7 +94,7 @@ namespace EscapeDungeonGateway
             #endregion
 
             #region Services
-            //services.AddScoped<ITokenService, TokenService>();
+
             #endregion
 
             services.AddControllers();
